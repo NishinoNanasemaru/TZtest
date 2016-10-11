@@ -11,16 +11,10 @@
               android:paddingTop="@dimen/activity_vertical_margin"
               tools:context="com.tz.tztest.MainActivity">
 
-    <Button
-        android:id="@+id/bt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="doClick"
-        android:text="开始"/>
-
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
         <LinearLayout
             android:id="@+id/ll"
@@ -31,5 +25,12 @@
 
     </ScrollView>
 
+    <Button
+        android:id="@+id/bt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:onClick="doClick"
+        android:text="开始"/>
 
 </LinearLayout>
