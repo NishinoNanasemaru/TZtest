@@ -2,8 +2,6 @@ package com.tz.tztest;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
@@ -11,55 +9,47 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import static com.tz.tztest.R.id.bt;
+import static com.tz.tztest.R.id.ll;
+
 public class MainActivity extends AppCompatActivity {
 
-    TextView textView;
-    Button bt;
-    LinearLayout ll;
-
-    public Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            switch (msg.what) {
-                case 1:
-                    nishinoNanase();
-                    break;
-                default:
-                    break;
-            }
-        }
-    };
+    TextView mTextView;
+    LinearLayout mLinearLayout;
+    Button mButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        bt = (Button) findViewById(R.id.bt);
-        ll = (LinearLayout) findViewById(R.id.ll);
-        textView = new TextView(MainActivity.this);
-        bt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ll.addView(textView);
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Message m = new Message();
-                        m.what = 1;
-                        mHandler.sendMessage(m);
-                    }
-                }).start();
-            }
-        });
+        init();
+    }
+
+    private void init() {
+        mButton = (Button) findViewById(bt);
+        mLinearLayout = (LinearLayout) findViewById(ll);
+        mTextView = new TextView(MainActivity.this);
+    }
+
+    public void doClick(View view) {
+        switch (view.getId()) {
+            case R.id.bt:
+                for (int i = 0;i<5;i++){
+                    nishinoNanase();
+                }
+                break;
+            default:
+                break;
+        }
     }
 
     private void nishinoNanase() {
-        textView = new TextView(MainActivity.this);
+        mLinearLayout.addView(mTextView);
         String name = "西野七濑";
-        textView.setText(name);
-        textView.setGravity(Gravity.CENTER);
-        textView.setTextSize(48);
-        textView.setTextColor(Color.BLUE);
+        mTextView.setText(name);
+        mTextView.setGravity(Gravity.CENTER);
+        mTextView.setTextSize(48);
+        mTextView.setTextColor(Color.BLUE);
+        mTextView = new TextView(MainActivity.this);
     }
 }
