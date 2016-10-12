@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     TextView mTextView;
     LinearLayout mLinearLayout;
     Button mButton;
-
+    Button mButtons;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
